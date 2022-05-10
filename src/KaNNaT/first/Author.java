@@ -3,6 +3,8 @@ package KaNNaT.first;
 
 // 2. Ќеобходимо создать класс Author, который содержит в себе данные об имени и фамилии автора.
 
+import java.util.Objects;
+
 public class Author {
     public String authorFirstName;
     public String authorSurnameName;
@@ -23,6 +25,29 @@ public class Author {
     public String getAuthorSurnameName() {
         return authorSurnameName;
     }
+
+
+// –еализовать методы toString, equals и hashCode в классах Author и Book, которые были созданы на прошлом уроке.
+
+    @Override
     public String toString() {
-        return this.authorFirstName + " " + this.authorSurnameName;}
+        return "Author{" +
+                "name='" + authorFirstName + '\'' +
+                ", surnameName='" + authorSurnameName + '\'' +
+                '}';
+
+    }
+
+    @Override
+    public boolean equals(Object b) {
+        if (this == b) return true;
+        if (b == null || getClass() != b.getClass()) return false;
+        Author author = (Author) b;
+        return authorFirstName.equals(author.authorFirstName) && authorSurnameName.equals(author.authorSurnameName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(authorFirstName, authorSurnameName);
+    }
 }

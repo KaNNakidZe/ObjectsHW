@@ -4,6 +4,8 @@ package KaNNaT.first;
 // Типы полей должны быть String, Author (который мы создадим  в п. 2) и int.
 
 
+import java.util.Objects;
+
 public class Book {
 
     private final String bookName;
@@ -36,6 +38,31 @@ public class Book {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+
+// Реализовать методы toString, equals и hashCode в классах Author и Book, которые были созданы на прошлом уроке.
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name=" + bookName + '\'' +
+                ", author=" + authorName +
+                ", releaseYear=" + releaseYear +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object a) {
+       if (this == a) return true;
+       if (a == null || getClass() != a.getClass()) return false;
+        Book book = (Book) a;
+        return releaseYear == book.releaseYear && bookName.equals(book.bookName) && authorName.equals(book.authorName);
+    }
+
+    @Override
+    public  int hashCode() {
+        return Objects.hash(bookName, authorName, releaseYear);
     }
 
 }
